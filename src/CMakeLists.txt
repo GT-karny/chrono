@@ -55,7 +55,7 @@ endif()
 #-----------------------------------------------------------------------------
 
 # This is a hack -- look for a more robust solution
-set(CH_CXX14 FALSE)
+set(CH_CXX14 TRUE)
 set(CH_CXX17 FALSE)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")

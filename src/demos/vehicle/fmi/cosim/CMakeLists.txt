@@ -15,6 +15,7 @@ set(DEMOS
 
   demo_VEH_FMI2_WheeledVehicle_a
   demo_VEH_FMI2_WheeledVehicle_b
+  demo_VEH_FMI2_WheeledVehicle_TerrainFMU
 )
 
 #--------------------------------------------------------------
@@ -54,4 +55,5 @@ if (${FMU_EXPORT_SUPPORT})
 
   add_dependencies(demo_VEH_FMI2_WheeledVehicle_a FMU2cs_WheeledVehicle)
   add_dependencies(demo_VEH_FMI2_WheeledVehicle_b FMU2cs_WheeledVehicle FMU2cs_PathFollowerDriver FMU2cs_ForceElementTire FMU2cs_Powertrain)
+  add_dependencies(demo_VEH_FMI2_WheeledVehicle_TerrainFMU FMU2cs_WheeledVehicle FMU2cs_PathFollowerDriver FMU2cs_ForceElementTire FMU2cs_Powertrain FMU2cs_Terrain)
 endif()

@@ -9,6 +9,8 @@
 // http://projectchrono.org/license-chrono.txt.
 //
 // =============================================================================
+// Authors: GT-karny
+// =============================================================================
 // Co-simulation FMU encapsulating a terrain system.
 //
 // This terrain FMU must be co-simulated with a vehicle system (or tire system)

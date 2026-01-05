@@ -9,15 +9,22 @@
 // http://projectchrono.org/license-chrono.txt.
 //
 // =============================================================================
-// Authors: Radu Serban
+// Original Authors: Radu Serban
+// Modified by: GT-karny
 // =============================================================================
 //
-// Demo illustrating the co-simulation of:
-// - a Chrono wheeled vehicle FMU,
-// - a powertrain (engine+transmission) FMU,
-// - a path-follower driver FMU,
-// - 4 tire FMUs, and
-// - 4 terrain FMUs.
+// Extended Co-Simulation Demo
+// 
+// This demo illustrates the co-simulation of a vehicle system composed of
+// distinct FMUs for each subsystem, including explicit terrain interfacing:
+//
+//  1. Wheeled Vehicle FMU (Chassis & Suspension)
+//  2. Powertrain FMU (Engine & Transmission)
+//  3. Driver FMU (Path-follower)
+//  4. Tire FMUs (x4) - One per wheel, force element
+//  5. Terrain FMUs (x4) - One per tire, providing local terrain properties
+//
+// The simulation coordinates data exchange between these 11 FMU instances.
 //
 // =============================================================================
 

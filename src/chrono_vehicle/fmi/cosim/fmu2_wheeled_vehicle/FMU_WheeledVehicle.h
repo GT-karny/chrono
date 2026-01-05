@@ -9,7 +9,8 @@
 // http://projectchrono.org/license-chrono.txt.
 //
 // =============================================================================
-// Authors: Radu Serban
+// Original Authors: Radu Serban
+// Modified by: GT-karny
 // =============================================================================
 //
 // Co-simulation FMU encapsulating a wheeled vehicle system with 4 wheels.
@@ -112,6 +113,7 @@ class FmuComponent : public chrono::fmi2::FmuChronoComponentBase {
     fmi2Boolean system_SMC;                    ///< use SMC contact formulation (NSC otherwise)
     chrono::ChVector3d init_loc;               ///< initial vehicle location
     double init_yaw;                           ///< initial vehicle orientation
+    double init_speed;                         ///< initial vehicle forward speed
     chrono::ChVector3d engineblock_dir;        ///< engine block mounting direction
     chrono::ChVector3d transmissionblock_dir;  ///< transmission block mounting direction
     chrono::ChVector3d g_acc;                  ///< gravitational acceleration

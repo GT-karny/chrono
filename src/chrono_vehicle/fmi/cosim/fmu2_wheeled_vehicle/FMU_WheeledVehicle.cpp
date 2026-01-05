@@ -9,7 +9,8 @@
 // http://projectchrono.org/license-chrono.txt.
 //
 // =============================================================================
-// Authors: Radu Serban
+// Original Authors: Radu Serban
+// Modified by: GT-karny
 // =============================================================================
 //
 // Co-simulation FMU encapsulating a wheeled vehicle system with 4 wheels.
@@ -64,6 +65,7 @@ FmuComponent::FmuComponent(fmi2String instanceName,
     driver_inputs = {0, 0, 0, 0};
     init_loc = {0, 0, 0};
     init_yaw = 0;
+    init_speed = 0;
 
     engineblock_dir = {1, 0, 0};
     transmissionblock_dir = {1, 0, 0};
@@ -112,6 +114,8 @@ FmuComponent::FmuComponent(fmi2String instanceName,
     AddFmuVecVariable(init_loc, "init_loc", "m", "initial location",                                //
                       FmuVariable::CausalityType::parameter, FmuVariable::VariabilityType::fixed);  //
     AddFmuVariable(&init_yaw, "init_yaw", FmuVariable::Type::Real, "rad", "initial location Z",     //
+                   FmuVariable::CausalityType::parameter, FmuVariable::VariabilityType::fixed);     //
+    AddFmuVariable(&init_speed, "init_speed", FmuVariable::Type::Real, "m/s", "initial speed",      //
                    FmuVariable::CausalityType::parameter, FmuVariable::VariabilityType::fixed);     //
 
     AddFmuVecVariable(engineblock_dir, "engineblock_dir", "1", "engine block mounting direction",                    //
@@ -218,7 +222,7 @@ void FmuComponent::CreateVehicle() {
     // Create the vehicle system
     vehicle = chrono_types::make_shared<WheeledVehicle>(vehicle_JSON,
                                                         system_SMC ? ChContactMethod::SMC : ChContactMethod::NSC);
-    vehicle->Initialize(ChCoordsys<>(init_loc + ChVector3d(0, 0, 0.5), QuatFromAngleZ(init_yaw)));
+    vehicle->Initialize(ChCoordsys<>(init_loc + ChVector3d(0, 0, 0.5), QuatFromAngleZ(init_yaw)), init_speed);
 
     // Initialize the vehicle reference frame
     ref_frame = vehicle->GetRefFrame();

@@ -459,6 +459,9 @@ int main(int argc, char* argv[]) {
         driver_fmu.GetVariable("init_yaw", init_yaw, FmuVariable::Type::Real);
         vehicle_fmu.SetVecVariable("init_loc", init_loc);
         vehicle_fmu.SetVariable("init_yaw", init_yaw, FmuVariable::Type::Real);
+        
+        double init_speed = 0;
+        vehicle_fmu.SetVariable("init_speed", init_speed, FmuVariable::Type::Real);
     }
     vehicle_fmu.ExitInitializationMode();
 
